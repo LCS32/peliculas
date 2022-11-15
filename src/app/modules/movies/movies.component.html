@@ -1,0 +1,68 @@
+<div *ngIf="loading" class="row d-flex justify-content-center mt-4">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<section>
+    
+    <div *ngIf="!loading" class="row row-cols-1 row-cols-md-3 g-4">
+    
+            <div *ngFor="let movie of movies.results">
+    
+                <div class="card h-100">
+                    <img alt="movies" [src]="imgBaseUrl + movie.poster_path" class="card-img-top img-movies"
+                        alt="Hollywood Sign on The Hill" />
+                    <div class="card-body justify-content-end">
+    
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text">{{ movie.overview }}</p>
+                        <div>
+                            <strong>Fecha de lanzamiento: </strong><label for="release-date">{{ movie.release_date
+                                }}</label>
+                        </div>
+                        <div>
+                            <strong>Promedio de votos: </strong><label for="release-date">{{ movie.vote_average }}</label>
+                        </div>
+                        <div>
+                            <strong>Popularidad: </strong><label for="release-date">{{ movie.popularity }}</label>
+                        </div>
+    
+                    </div>
+    
+                    <div class="card-footer text-center">
+    
+                        <button pButton type="button" label="Ver Detalle " (click)="seeDetail(movie.id)"
+                            icon="pi pi-eye"></button>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+
+
+    
+
+    <!-- <div *ngIf="!loading" class="row mt-4">
+        <div *ngFor="let movie of movies.results">
+            <p-card header="{{movie.title}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                    <img alt="movies" [src]="imgBaseUrl + movie.poster_path" class="img-movies">
+                </ng-template>
+                <p>{{ movie.overview }}</p>
+                <div>
+                    <strong>Fecha de lanzamiento: </strong><label for="release-date">{{ movie.release_date }}</label>
+                </div>
+                <div>
+                    <strong>Promedio de votos: </strong><label for="release-date">{{ movie.vote_average }}</label>
+                </div>
+                <div>
+                    <strong>Popularidad: </strong><label for="release-date">{{ movie.popularity }}</label>
+                </div>
+                <ng-template pTemplate="footer">
+                    <button pButton type="button" label="Ver Detalle " (click)="seeDetail(movie.id)"
+                        icon="pi pi-eye"></button>
+                </ng-template>
+            </p-card>
+        </div>
+    </div> -->
+</section>
